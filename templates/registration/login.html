@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*login*/
+
+.center{
+    padding: 5%;
+    width: 35%;
+    margin: auto;
+    margin-top: 2%;
+    color: white;
+}
+
+.login-form{
+    background: #0000001c;
+    padding: 3%;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px 0.25rem #243b3b;
+}
+
+.titulo-login{
+    padding: 25px 0px 10px 0px;
+    text-align: center;
+    width: 100%;
+}
+
+.titulo-login h1{
+    font-size: 30px;
+    color: #ffffff;
+}
+.form-label{
+    text-align: left;
+    color: white;
+}
+form{
+    padding: 0 5%;
+}
+
+label > span{
+    color: red;
+}
+.mb-3 > input{
+    background-color: #ffffff1c;
+    border: none;
+    border-radius: 12px;
+    height: 45px;
+    color: white;
+}
+
+.mb-3 > input:focus{
+    background-color: #ffffff41;
+    border: 1px solid #243b3b;
+    box-shadow: 0px 0px 10px 0.25rem #243b3b;
+    color: white;
+}
+.login-form>.mb-3{
+    margin: 0;
+}
+
+
+.textinput, .passwordinput{
+    padding: 10px 5px;
+    
+    border-radius: 3px;
+    border: 1px solid #d2d2d2;
+    font-size: 13px;
+    outline: none;
+    margin-bottom: 8px;
+    
+}
+.mb-3{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.input:focus{
+    border: 1px solid #8c9094;
+}
+
+.login-button{
+    padding-top: 8px;
+}
+
+.button{
+    width: 100%;
+    padding: 8px 5px;
+    margin-bottom: 8px;
+    border-radius: 3px;
+    border: 1px solid #36a420;
+    font-size: 14px;
+    color: #f2f2f2;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    outline: none;
+    background-color: #36a420;
+}
+
+.button:hover{
+    background-color: #2b791c;
+    border: 1px solid #2b791c;
+    box-shadow: 0px 0px 10px 0.25rem #243b3b;
+}
+
+
+
+.contenedor-separador{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+.separador{
+    width: 45%;
+    height: 1px;
+    background-color: #8c9094;
+}
+
+.o{
+    color: #000;
+}
+
+
+
+
+.boton-registrate{
+    width: 100%;
+    padding: 8px 5px;
+    margin-bottom: 8px;
+    border-radius: 3px;
+    border: 1px solid #36a420;
+    font-size: 14px;
+    color: #f2f2f2;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    outline: none;
+    background-color: #36a420;
+    margin: auto;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.register_button{
+    width: 100%;
+    text-decoration: none;
+    color: #bdd8d8;
+    font-weight: 600;
+
+}
+.register_button:hover{
+    width: 100%;
+    text-decoration: underline;
+    color: #96bbbb;
+    font-weight: 600;
+
+}
+
+.boton-registrate:hover{
+    background: #42b72a;
+}
+
+.subtitle{
+    color: #749797;
+    font-weight: 600;
+    margin-top: 20px;
+}
+.register_subtitle{
+    color: #749797;
+    font-weight: 400;
+    
+}
+
+    </style>
+</head>
+<body>
+
+    {% extends 'nav.html'%}
+    {% block nav%} 
+
+    {% load crispy_forms_tags %}
+    <div class="center">
+        <div class="login-form">
+            <div class="titulo-login">
+                <h1>Log In</h1>
+                <p class="subtitle">Log in to save your favorite entertainment in your library</p>
+            </div>
+
+
+
+            <form id=login action="" method="post">
+                {% csrf_token%}
+
+                        {{ form | crispy }}
+                
+                       
+                        <div class="login-button">
+                            <input type="submit" class="button " value="Log in">
+                        </div>
+
+                           <div class="register">
+                                <p class="register_subtitle">Don't have an account?</p>
+                                <a class="register_button " href={% url 'register' %}>
+                                        Sign up        
+                                     </div>
+                                </a>
+
+
+                            </div> 
+
+                   
+           </form>
+           
+
+             
+    </div>
+    {%endblock%}
+</body>
+
+
+</html>

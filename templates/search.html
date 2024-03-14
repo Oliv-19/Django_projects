@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating app</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+   
+.head{
+    padding-top: 6%;
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    
+
+}
+.biblio{
+    text-align: center;
+    
+}
+/* filters */
+.selects{
+    align-self: center;
+    margin-top: auto;
+}
+
+.selects_wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.select_1, .select_2{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+label{
+    padding-left: 9px;
+    font-size: smaller;
+}
+
+select{
+    box-sizing: border-box;
+    padding: 4px 15px 4px 15px;
+    width: 150px;
+    background-color: #E1E1E1;
+    border: none;
+    color: #272727;
+    font-weight: bold;
+    font-size: 15px;
+    outline: none;
+    border-radius: 5px 5px 5px 5px;
+}
+
+option:hover{
+    background-color: #cecccc;
+}
+
+.filter_btn{
+    height: 35px;
+    margin-top: 18px;
+    background-color: darkslategrey;
+    padding: 0 3px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+
+}
+.filter_svg{
+   
+    fill: white;
+    width: 25px;
+    height: 25px;
+}
+
+.filter_btn:hover{
+    border: 1px white solid;
+}
+
+/* filters */
+
+.content{
+    height: fit-content;
+    justify-content: center;
+    margin-top: 20px;
+
+}
+.populares{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 30px;
+}
+.poster{
+    width: 200px;
+    height: 300px;
+    border-radius: 4px;
+    margin: auto;
+    margin-top: 3%;
+}
+
+.posters {
+    display: grid;
+    grid-template: repeat(1, 1fr)/ repeat(5, 1fr);
+    margin: 0 5%;
+    gap: 10px;
+    
+}
+.poster_container {
+    width: 230px;
+    height: 380px;
+    background-color: rgb(0 22 6 / 51%);
+    display: flex;
+    flex-direction: column;
+    color: #dddde3;
+    margin-top: 10px;
+    border-radius: 10px;
+    transition: transform .2s;
+}
+
+.poster_container:hover{
+    transform: scale(1.1);
+}
+.posters a{
+    text-decoration: none;
+}
+
+.text{
+    display: flex;
+
+    height: 40px;
+    justify-content: space-evenly;
+    gap: 60px;
+    font-weight: bolder;
+}
+.sgv{
+    color: white;
+}
+.title_container{
+    height: 40px;
+    text-align: center;
+    font-weight: bolder;
+    padding: 3px 15px 0 15px;
+
+}
+.small_content_title{
+    font-size: 14px;
+
+}
+.content_title{
+    margin-top: 5px;
+}
+
+.add_button , .already_in_button{
+    position: relative;
+    bottom: 40px;
+    margin-left: 50px;
+    background-color: rgb(47 79 79 / 91%);
+    padding: 1px 1px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    height: 40px;
+    width: 40px;
+}
+
+.add_button:hover{
+    background-color: rgba(88, 129, 129, 0.753);
+}
+.done_svg{
+    font-size: 35px;
+}
+
+.btn_head{
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    padding: 5px 0;
+    background-color: #E1E1E1;
+    border: none;
+    color: #272727;
+    font-weight: bold;
+    font-size: 13px;
+    outline: none;
+    border-radius: 5px 5px 5px 5px;
+    width: 83px;
+    height: 30px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.btn_head:hover{
+    background-color: #e1e1e141;
+}
+
+.btn_head:hover > .icons {
+
+    color: white;
+}
+.btn_head:hover > .trash_icon{
+    fill: white;
+}
+
+.btn_head_2{
+    width: 109px;
+    height: 46px;
+}
+.idk_wrapper{
+    height: 135px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.add_new_content{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    right: 56px;
+    margin-bottom: 37px;
+}
+.add_new_content_2{
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 56px;
+    justify-content: center;
+}
+.add_new_content_3{
+    display: none;
+}
+
+.add_new_wrapper{
+    background-color: rgb(0 22 6 / 51%);
+    border-radius: 5px;
+    height: 100px;
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.add_new_wrapper_2{
+    height: 200px;
+    width: 270px;
+}
+
+.add_new_text{
+    font-size: small;
+}
+.add_new_button_text{
+    margin-top: 13px;
+}
+
+
+
+#add_new_popup{
+    height: 475px;
+	width: 70%;
+    z-index: 1;
+    overflow: hidden;
+    margin: 5% auto;
+    border: none;
+    border-radius: 10px;
+    box-shadow: #0000007a 7px 5px 13px 6px;
+    
+}
+.popup_title{
+    color: #242424;
+    font-weight: bold;
+}
+.popup_text{
+    color: #AEAEAE;
+}
+.popup_icons{
+    width: 40px;
+    height: 40px;
+    fill: white;
+    
+}
+.svg_wrapper{
+    position: relative;
+    top: -39px;
+    width: 70px;
+    height: 70px;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+.buttons_3{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 82%;
+    margin-top: 80px;
+    flex-direction: row-reverse;
+    
+}
+
+
+.delete_btns{
+    display: flex;
+    padding: 7px 13px;
+    background-color: #E1E1E1;
+    border: none;
+    font-weight: bold;
+    font-size: 14px;
+    outline: none;
+    border-radius: 5px 5px 5px 5px;
+}
+.delete_btns:hover{
+    background-color: #272727bb;
+    color: white;
+}
+
+.btn_delete{
+    background-color: #F42F3B;
+    color: white;
+}
+
+.popup_content_2 {
+	padding: 20px 74px;
+    background-color: #F5F5F5;
+    width: 100%;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    height: 100%;
+    color: #242424;
+    
+    
+}
+
+.edit_img{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    
+    box-shadow: 9px 5px 15px 5px #000000a1;
+    border-radius: 5px;
+
+
+}
+.popup_img_wrapper{
+    position: relative;
+    top: -40px;
+    width: 80px;
+    height: 125px;
+    justify-content: center;
+    margin: auto;
+    
+}
+.form_wrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 15%;
+}
+.form_right{
+    margin-top: 50px;
+}
+.form_left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 185px;
+}
+
+.add_new_title{
+    font-weight: bold;
+}
+
+.hidden_span{
+    display: none;
+}
+
+
+    </style>
+</head>
+<body>
+    {% extends 'nav.html'%}
+    {% block nav%}
+
+    <div popover  id="add_new_popup">
+        <div class="popup_content_2">
+            <form method="post" class="edit_form" action="/addNewContent">
+                        {% csrf_token %}
+                        <h4 class="add_new_title">Add New Content</h4>
+                <div class="form_wrapper">
+                    <div class="form_left">
+                        
+                        <h6>Title:</h6>
+                        <input required type="text" name="title" >
+                        
+                        <h6>Poster Url:</h6> 
+                        <input name="img" type="text" placeholder="{{content_object.poster}}">
+
+                        <h6>Episodes:</h6>
+                        <input name="episodes" type="number" placeholder="{{content_object.episodes}}">
+                        <h6>Year:</h6>
+                        <input name="year" type="number" placeholder="{{content_object.year}}">
+                        <h6>Authors:</h6>
+                        <input name="author" type="text" placeholder="{{authors}}">
+                        {{typesFormTwo.as_table}}
+                        
+                    </div>
+                    <div class="form_right">
+                        <h6>Description:</h6>
+                        <textarea style="width: 100%; " name="plot" class="review_textarea" cols="60" rows="8" >{{content_object.description}}</textarea>
+                    <div class="buttons_3">
+                        
+                            <button type="submit" class="btn_delete delete_btns" name="Edit">
+                                Save
+                            </button>
+                        
+                        <button type="reset" class=" delete_btns" id="add_new_close-popup">Cancel</button>
+                    </div>  
+                    </div>
+
+                       
+                </div>
+                 
+            </form>
+           
+        </div>
+    </div>
+    <div class="head">
+        <div class="biblio_wrapper">
+            {%if content_exist%}
+            <h2 class="biblio">{{search}}</h2>
+            {%else%}
+            <h2 class="biblio">"{{search}}" not found</h2>
+            {%endif%}
+           
+        </div>
+        <div class="idk_wrapper">
+            <div class="selects">
+                <form action="search" method="get">
+                    <div class="selects_wrapper">
+                    <input type="hidden" name="content" value="{{search}}">
+                    
+                        <div class="select_1">
+                        {{typesForm.as_table}}
+                        </div>
+                        <div class="select_2">
+                        {{filterForm.as_table}}
+                        </div>  
+                        <button class="filter_btn" type="submit">
+                        
+                            <?xml version="1.0" ?>
+                            <svg class="filter_svg" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                <defs><style>.cls-1{fill:none;}</style></defs>
+                                <title/>
+                                <g data-name="Layer 2" id="Layer_2">
+                                    <path d="M28,9H11a1,1,0,0,1,0-2H28a1,1,0,0,1,0,2Z"/><path d="M7,9H4A1,1,0,0,1,4,7H7A1,1,0,0,1,7,9Z"/>
+                                    <path d="M21,17H4a1,1,0,0,1,0-2H21a1,1,0,0,1,0,2Z"/><path d="M11,25H4a1,1,0,0,1,0-2h7a1,1,0,0,1,0,2Z"/>
+                                    <path d="M9,11a3,3,0,1,1,3-3A3,3,0,0,1,9,11ZM9,7a1,1,0,1,0,1,1A1,1,0,0,0,9,7Z"/><path d="M23,19a3,3,0,1,1,3-3A3,3,0,0,1,23,19Zm0-4a1,1,0,1,0,1,1A1,1,0,0,0,23,15Z"/>
+                                    <path d="M13,27a3,3,0,1,1,3-3A3,3,0,0,1,13,27Zm0-4a1,1,0,1,0,1,1A1,1,0,0,0,13,23Z"/>
+                                    <path d="M28,17H25a1,1,0,0,1,0-2h3a1,1,0,0,1,0,2Z"/><path d="M28,25H15a1,1,0,0,1,0-2H28a1,1,0,0,1,0,2Z"/></g>
+                                    <g id="frame"><rect class="cls-1" height="32" width="32"/></g></svg>
+                        </button>
+                    </div>
+                </form>
+
+
+                
+            </div>
+            {% if content_exist == True%}
+                {% if request.user.is_authenticated%}
+                
+                <div class="add_new_content" id="add_new_content">
+                    <div class="add_new_wrapper">
+                        <p class="add_new_text">Can't find what your looking for?</p>
+                        <button popovertarget="add_new_popup" type="submit" class="btn_head " name="edit" id="add_new_open-popup">
+                        
+                            <p class="add_new_button_text">Add new</p>
+                            <span class="material-symbols-outlined">
+                                note_stack_add
+                                </span>
+                        </button>
+                    </div>
+                
+                </div>
+                {%endif%}
+            {%else%}
+                <div class="add_new_content_3" id="add_new_content">
+                    <div class="add_new_wrapper">
+                        <p class="add_new_text">Can't find what your looking for?</p>
+                        <button popovertarget="add_new_popup" type="submit" class="btn_head " name="edit" id="add_new_open-popup">
+                        
+                            <p class="add_new_button_text">Add new</p>
+                            <span class="material-symbols-outlined">
+                                note_stack_add
+                                </span>
+                        </button>
+                    </div>
+                
+                </div>
+            {%endif%}
+        </div>
+        
+    </div>
+    {% if content_exist == True%}
+    <div class="content">
+        <div class="posters">
+            {% for i in datos %}
+                <a href="/content/{{i.id}}">
+                    <div class="poster_container">
+                            <div class="title_container">
+                                <p class="content_title">{{i.title|truncatewords:7}}</p>
+                            </div>
+                            <img class="poster" src='{{i.poster}}' alt="alt">
+                            <div class="text">
+
+                                <p class="year">{{i.year}}</p>
+                                <form action="add" method="post" id="add_button">
+                                    {% csrf_token %} 
+                                    <input type="hidden" name="content_id" value="{{i.id}}">
+
+                                        {% if i.id in idk2 %}
+                                        <div  class="already_in_button">
+                                            
+                                            <span class="material-symbols-outlined done_svg"> done </span>
+                                        </div>   
+                                       
+                                        {% else %}
+                                        <button type="submit" class="add_button">
+                                        <?xml version="1.0" ?>
+                                            <svg style="fill:white;" class="svg" height="40" viewBox="0 0 48 48" width="40" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M38 26H26v12h-4V26H10v-4h12V10h4v12h12v4z"/>
+                                                <path d="M0 0h48v48H0z" fill="none"/>
+                                            </svg>
+                                        </button>
+                                        {%endif%}
+                                    
+                                </form>
+                            </div>
+                    </div>    
+                </a>
+            {%endfor%}
+            
+        </div>
+    </div>
+    {%else%}
+    <div class="add_new_content_2">
+        <div class="add_new_wrapper  add_new_wrapper_2">
+            <p class="add_new_text">Can't find what your looking for?</p>
+            <button popovertarget="add_new_popup" type="submit" class="btn_head btn_head_2" name="edit" id="add_new_open-popup">
+               
+                <p class="add_new_button_text">Add new</p>
+                <span class="material-symbols-outlined">
+                    note_stack_add
+                    </span>
+            </button>
+        </div>
+    
+    </div>
+    {%endif%}
+    <script>
+        const title = document.querySelectorAll('.content_title')
+       
+        title.forEach(element =>{
+           
+            let length = element.textContent.length
+            if(length > 25){element.classList.remove('content_title')
+                element.classList.add('small_content_title')}
+        })
+        
+        const add_button = querySelectorAll('#add_button')
+
+        add_button.on('submit', function(event) {
+            alert(title.textContent+ ' Added')
+        })
+
+       
+        const popup = document.getElementById("add_new_popup")
+        // const openPopup = document.getElementById("add_new_open-popup")
+        const closePopup = document.getElementById('add_new_close-popup')
+
+        
+
+        // openPopup.addEventListener('click', () => {
+        //     popup.style.display = "block";
+        //     console.log('clicked')
+        // })
+
+        closePopup.addEventListener('click', () => {
+            popup.style.display = "none";
+        })
+        
+    </script>
+    {%endblock%}
+</body>

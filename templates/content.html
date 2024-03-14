@@ -1,0 +1,509 @@
+{% extends 'nav.html'%}
+{% block nav%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{content_object.title}} </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+.head{
+    padding-top: 6%;
+    height: 135px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+
+}
+.biblio{
+    text-align: center;
+    
+}
+
+.all_wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.top_wrapper{
+    display: flex;
+    flex-direction: row;
+    height: 500px;
+}
+.poster_sec{
+    height: 100%;
+    width: 40%;
+    
+}
+.right{
+    height: 80%;
+    width: 40%;
+    background-color: #00000033;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 9px 5px 15px 5px #000000a1;
+    margin: auto;
+    margin-top: 35px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    
+    
+}
+.img{
+    height: 419px;
+    width: 291px;
+    display: flex;
+    margin: auto;
+    margin-top: 30px;
+    box-shadow: 9px 5px 15px 5px #000000a1;
+    border-radius: 5px;
+}
+
+.right_bottom{
+    background-color: #00000033;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 9px 5px 15px 5px #000000a1;
+    text-align: center;
+    width: 291px;
+    margin: auto;
+}
+.review_sec{
+    height: 61%;
+    width: 50%;
+    background-color: #00000033;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 9px 5px 15px 5px #000000a1;
+    margin: auto;
+}
+.review{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    padding: 1% ;
+    
+
+}
+
+.ratings_sec{
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rating{
+    padding: 10px 30px;
+    text-align: center;
+    
+}
+.rating .star{
+    display: flex;
+    gap:  20px;
+}
+.rating .star a{
+    color: #cfcfcfc4;
+    font-size: 30px;
+}
+.rating .star a.active{
+    color: rgb(253 186 81);
+}
+.author{
+    display: flex;
+    flex-direction: column;
+}
+
+.authors_link {
+    text-decoration: underline;
+    color: rgb(231, 231, 231);
+    font-weight: bold;
+}
+.authors_link:hover{
+    color: #9e9e9e;
+    text-decoration: underline;
+}
+.review_textarea{
+    border-radius: 5px;
+}
+.hidden_span{
+    display: none;
+}
+.hr{
+    height: 2px;
+    border: 1px solid #00000048;
+    margin: 5px 0 10px 0;
+}
+
+.bottom{
+    display: flex;
+    flex-direction: row
+}
+.btn_head{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 5px 5px 5px 5px;
+    background-color: #E1E1E1;
+    border: none;
+    color: #272727;
+    font-weight: bold;
+    font-size: 12px;
+    outline: none;
+    border-radius: 5px 5px 5px 5px;
+}
+.btn_head:hover{
+    background-color: #e1e1e141;
+}
+
+.btn_head:hover > .icons {
+
+    color: white;
+}
+.btn_head:hover > .trash_icon{
+    fill: white;
+}
+.buttons{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    right: 12%;
+}
+.buttons_2{
+    display: flex;
+    align-items: center;
+    margin-left: 58%;
+    gap: 10px;
+    
+}
+.buttons_3{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 82%;
+    margin-top: 15px;
+    flex-direction: row-reverse;
+    
+}
+
+.icons{
+    width: 20px;
+    height: 20px;
+}
+.trash_icon{
+    fill: red;
+}
+.title_wrapper{
+    width: 40%;
+}
+
+/* popups */
+ #edit_popup-2{
+
+    height: 475px;
+	width: 70%;
+    z-index: 1;
+    overflow: hidden;
+    margin: 5% auto;
+    border: none;
+    border-radius: 10px;
+    box-shadow: #0000007a 7px 5px 13px 6px;
+    
+}
+
+.popup-content {
+	padding: 0 20px 0px 20px;
+    margin: 15% auto;
+    background-color: #F5F5F5;
+    width: 400px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    height: 250px;
+    color: #242424;
+    border: none;
+    box-shadow: #0000007a 7px 5px 13px 6px;
+}
+.popup_title{
+    color: #242424;
+    font-weight: bold;
+}
+.popup_text{
+    color: #AEAEAE;
+}
+.popup_icons{
+    width: 40px;
+    height: 40px;
+    fill: white;
+    
+}
+.svg_wrapper{
+    width: 70px;
+    height: 70px;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 4% auto;
+}
+
+
+.delete_btns{
+    display: flex;
+    padding: 7px 13px;
+    background-color: #E1E1E1;
+    border: none;
+    font-weight: bold;
+    font-size: 14px;
+    outline: none;
+    border-radius: 5px 5px 5px 5px;
+}
+.delete_btns:hover{
+    background-color: #272727bb;
+    color: white;
+}
+
+.btn_delete{
+    background-color: #F42F3B;
+    color: white;
+}
+
+.popup_content_2 {
+	padding: 0 74px;
+    margin: 7% auto;
+    
+    
+}
+
+.edit_img{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    
+    box-shadow: 9px 5px 15px 5px #000000a1;
+    border-radius: 5px;
+
+
+}
+.popup_img_wrapper{
+    position: relative;
+    top: -40px;
+    width: 80px;
+    height: 125px;
+    justify-content: center;
+    margin: auto;
+    
+}
+.form_wrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 15%;
+}
+
+/* popups */
+
+    </style>
+</head>
+<body>
+    <span class="hidden_span">{{stars}}</span>
+
+    {% if not_saved == True%}
+        <div  id="popup_1_wrapper">
+            <div popover id="popup-1" class="popup-content">
+                <div class="svg_wrapper">
+                    <?xml version="1.0" ?>
+                    <svg class="popup_icons " viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M432 80h-82.38l-34-56.75C306.1 8.827 291.4 0 274.6 0H173.4C156.6 0 141 8.827 132.4 23.25L98.38 80H16C7.125 80 0 87.13 0 96v16C0 120.9 7.125 128 16 128H32v320c0 35.35 28.65 64 64 64h256c35.35 0 64-28.65 64-64V128h16C440.9 128 448 120.9 448 112V96C448 87.13 440.9 80 432 80zM171.9 50.88C172.9 49.13 174.9 48 177 48h94c2.125 0 4.125 1.125 5.125 2.875L293.6 80H154.4L171.9 50.88zM352 464H96c-8.837 0-16-7.163-16-16V128h288v320C368 456.8 360.8 464 352 464zM224 416c8.844 0 16-7.156 16-16V192c0-8.844-7.156-16-16-16S208 183.2 208 192v208C208 408.8 215.2 416 224 416zM144 416C152.8 416 160 408.8 160 400V192c0-8.844-7.156-16-16-16S128 183.2 128 192v208C128 408.8 135.2 416 144 416zM304 416c8.844 0 16-7.156 16-16V192c0-8.844-7.156-16-16-16S288 183.2 288 192v208C288 408.8 295.2 416 304 416z"/></svg>
+                </div>
+                <h3 class="popup_title">Delete from library?</h3>
+                <p class="popup_text">This will delete your content from your library <br> Are you sure?</p>
+                <div class="buttons_2">
+
+                    <button class=" delete_btns" id="close-popup-1">Cancel</button>
+                    <form action="/delete" method="get">
+                        {% csrf_token %}
+                        <input type="hidden" name="user_content_id" value="{{user_content_id}}">
+
+                        <button type="submit" class="btn_delete delete_btns" name="delete">
+                            Delete
+                        </button>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    
+    {%endif%}
+    <div popover id="edit_popup-2">
+        <div class="popup_content_2">
+            <div class="popup_img_wrapper">
+                <img class="edit_img " src="{{content_object.poster}}" alt="">
+            </div>
+            <form method="post" class="edit_form" action="/edit/{{content_object.id}}">
+                        {% csrf_token %}
+                <div class="form_wrapper">
+                    <div class="form_left">
+                        <h6>Poster Url:</h6>
+                        <input name="img" type="text" value="{{content_object.poster}}">
+                        <h6>Episodes:</h6>
+                        <input name="episodes" type="number" value="{{content_object.episodes}}">
+                        <h6>Year:</h6>
+                        <input name="year" type="number" value="{{content_object.year}}">
+                        <h6>Authors:</h6>
+                        <input name="author" type="text" value="{{author}}" >
+                    </div>
+                    <div class="form_right">
+                        <h6>Description:</h6>
+                        <textarea style="width: 100%; "  name="plot" class="review_textarea" cols="60" rows="8" >{{content_object.description}}</textarea>
+                    </div>
+                        
+                </div>
+                <div class="buttons_3">
+                        
+                            <button type="submit" class="btn_delete delete_btns" name="Edit">
+                                Save
+                            </button>
+                        
+                        <button type="reset" class=" delete_btns" id="edit_close-popup-2">Cancel</button>
+                    </div>  
+            </form>
+            
+        </div>
+    </div>
+    
+    <div class="head">
+        <div class="title_wrapper">
+            <h2 class="biblio">{{content_object.title}}</h2>
+        </div>
+        {% if request.user.is_authenticated%}
+            <div class="buttons">
+                <!-- <form class="buttons_form" action="/content/{{content_object.id}}/edit" hx-target="#all_wrapper">
+                    {% csrf_token %} -->
+                    <!-- <input type="hidden" name="user_content_id" value="{{user_content_id}}"> -->
+                    <!-- <button class="btn_head" name="edit" > -->
+                    <button popovertarget="edit_popup-2" type="submit" class="btn_head" name="edit" id="edit_open-popup-2">
+                        <?xml version="1.0" ?>
+                        <svg class="feather feather-edit  icons" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                    </button>
+                    <!-- <button class="btn_head" name="delete">
+                        <?xml version="1.0" ?>
+                        <svg class="trash_icon icons" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M432 80h-82.38l-34-56.75C306.1 8.827 291.4 0 274.6 0H173.4C156.6 0 141 8.827 132.4 23.25L98.38 80H16C7.125 80 0 87.13 0 96v16C0 120.9 7.125 128 16 128H32v320c0 35.35 28.65 64 64 64h256c35.35 0 64-28.65 64-64V128h16C440.9 128 448 120.9 448 112V96C448 87.13 440.9 80 432 80zM171.9 50.88C172.9 49.13 174.9 48 177 48h94c2.125 0 4.125 1.125 5.125 2.875L293.6 80H154.4L171.9 50.88zM352 464H96c-8.837 0-16-7.163-16-16V128h288v320C368 456.8 360.8 464 352 464zM224 416c8.844 0 16-7.156 16-16V192c0-8.844-7.156-16-16-16S208 183.2 208 192v208C208 408.8 215.2 416 224 416zM144 416C152.8 416 160 408.8 160 400V192c0-8.844-7.156-16-16-16S128 183.2 128 192v208C128 408.8 135.2 416 144 416zM304 416c8.844 0 16-7.156 16-16V192c0-8.844-7.156-16-16-16S288 183.2 288 192v208C288 408.8 295.2 416 304 416z"/></svg>
+                    </button> -->
+                <!-- </form> -->
+                {% if not_saved == True%}
+                <button popovertarget="popup-1" type="submit" class="btn_head" name="delete" id="open-popup-1">
+                    <?xml version="1.0" ?>
+                    <svg class="trash_icon icons" viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M432 80h-82.38l-34-56.75C306.1 8.827 291.4 0 274.6 0H173.4C156.6 0 141 8.827 132.4 23.25L98.38 80H16C7.125 80 0 87.13 0 96v16C0 120.9 7.125 128 16 128H32v320c0 35.35 28.65 64 64 64h256c35.35 0 64-28.65 64-64V128h16C440.9 128 448 120.9 448 112V96C448 87.13 440.9 80 432 80zM171.9 50.88C172.9 49.13 174.9 48 177 48h94c2.125 0 4.125 1.125 5.125 2.875L293.6 80H154.4L171.9 50.88zM352 464H96c-8.837 0-16-7.163-16-16V128h288v320C368 456.8 360.8 464 352 464zM224 416c8.844 0 16-7.156 16-16V192c0-8.844-7.156-16-16-16S208 183.2 208 192v208C208 408.8 215.2 416 224 416zM144 416C152.8 416 160 408.8 160 400V192c0-8.844-7.156-16-16-16S128 183.2 128 192v208C128 408.8 135.2 416 144 416zM304 416c8.844 0 16-7.156 16-16V192c0-8.844-7.156-16-16-16S288 183.2 288 192v208C288 408.8 295.2 416 304 416z"/></svg>
+                </button>
+                {%endif%}
+        </div> 
+        {%endif%}
+    </div>
+    <div class="second">
+        <div class="all_wrapper" id="all_wrapper">
+            <div class="top_wrapper">
+                <div class="poster_sec">
+                    <img class="img" src="{{content_object.poster}}" alt="">
+                </div>
+                <div class="right">
+                    <div class="plot_sec">
+                        <p>{{content_object.description | truncatewords:155}}</p>
+                    </div>
+                   
+                    
+                    
+                </div> 
+            </div>
+            <div class="bottom">
+                <div class="right_bottom">
+                    <div class="episodes">
+                        <h5>Episodes:</h5>
+                        <p>{{content_object.episodes}}</p>
+                    </div>
+                    <div class="year">
+                        <h5>Release Year:</h5>
+                        <p>{{content_object.year}}</p>
+                    </div>
+                    <div class="author">
+                        <h5>Author:</h5>
+                        {% for author in authors%}
+                            {% if author != None %}
+                                <a class="authors_link" href="/author/{{author}}" name="author">{{author}}</a>
+                            {% else %}
+                                <p>{{author}}</p>
+                            {%endif%}
+                        {%endfor%}
+                    </div>
+                </div>   
+                <div class="review_sec">
+                    <form action="/userRating/{{current_user_id}}/{{content_object.id}}/{{stars}}" method="post">
+                        {% csrf_token  %}
+                        <div class="ratings_sec">
+                            <div class="rating">
+                                <h6>Rate this {{content_object.typeContent}}</h6>
+                                <div class="star">
+                                   
+                                    <a href="/userRating/{{current_user_id}}/{{content_object.id}}/1" class="bi-star-fill" id="star_1"></a>
+                                    <a href="/userRating/{{current_user_id}}/{{content_object.id}}/2" class="bi-star-fill" id="star_2"></a>
+                                    <a href="/userRating/{{current_user_id}}/{{content_object.id}}/3" class="bi-star-fill" id="star_3"></a>
+                                    <a href="/userRating/{{current_user_id}}/{{content_object.id}}/4" class="bi-star-fill" id="star_4"></a>
+                                    <a href="/userRating/{{current_user_id}}/{{content_object.id}}/5" class="bi-star-fill" id="star_5"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review">
+                            <h6>Your Review:</h6>
+                            <textarea name="review" class="review_textarea" cols="60" rows="5" >{{reviewPH}}</textarea>
+                            <input type="submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+        
+
+
+        const stars = document.querySelectorAll('.star a')
+        const rating = document.querySelector('.hidden_span').textContent
+    
+        stars.forEach((item, index1) => {
+            
+            if (index1 < rating) {item.classList.add('active')}
+            item.addEventListener('click',
+            () => {
+                stars.forEach((star, index2)=>{
+                    index1 >= index2 ? star.classList.add('active'):star.classList.remove('active')
+                })
+            })
+            
+        })
+           
+
+       
+    </script>
+    
+    {%endblock nav%}
+
+
+</body>

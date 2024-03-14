@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rating app</title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+body{
+    overflow-x: hidden;
+    background-color: darkslategrey;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 100%;
+}
+.inicio{
+    display: flex;
+    height: 600px;
+    justify-content: space-between;
+    flex-direction: column;
+    
+    padding: 5%;
+    text-align: center;
+    
+}
+
+.buscar{
+    padding: 0px 200px;
+}
+/* search input */
+
+.input_group_1{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 30px;
+        align-items: center;
+    }
+    .btn_1{
+        width: 37px;
+        height: 45.5px;
+        background-color: #E1E1E1;
+        border: none;
+        border-radius: 0px 5px 5px 0px;
+    }
+    .input-icon_1 {
+        color: #272727;
+        margin-top: 24px;
+        width: 25px;
+        height: 25px;
+        transform: translateY(-50%);
+    }
+
+    .input-wrapper_1 {
+       
+        width: 600px;
+    }
+    .input_1 {
+        box-sizing: border-box;
+        padding: 12px 15px 11px 35px;
+        width: 100%;
+        background-color: #E1E1E1;
+        border:none;
+        color: #272727;
+        font-weight: bold;
+        font-size: 15px;
+        outline: none;
+        border-radius: 5px 0px 0px 5px;
+       
+    }
+    .input_1::placeholder{
+        color: #272727;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    .input_1:-webkit-autofill,
+    .input_1:-webkit-autofill:hover, 
+    .input_1:-webkit-autofill:focus {
+        -webkit-text-fill-color: #272727;
+        -webkit-box-shadow: 0 0 0px 40rem rgb(226, 231, 238)  inset;
+    }
+    /* search input */
+
+.random_posters{
+    height: 40%;
+    
+    margin: 8% ;
+    padding: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+
+.poster{
+    height: 280px;
+    width: 190px;
+    border-radius: 10px;
+    box-shadow: #222121bb 11px 6px 10px 4px;
+}
+.random_movie{
+    position: relative;
+    top: -5px;
+}
+.populars{
+    width: 100%;
+}
+.popular{
+    padding: 5% 3%;
+}
+h3{
+    position: relative;
+    left: 44%;
+    top: 10%;
+    margin-bottom: 3%;
+}
+.populares{
+    height: 60%;
+    width: 100%;
+   position: relative;
+   top: 15%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#popular_movies, #popular_books{
+    background-color: rgb(36, 59, 59);
+}
+
+
+</style>
+</head>
+<body>{% extends 'nav.html'%}
+
+    
+    {% block nav%} 
+    <section class="inicio">
+       
+            <div class="add">
+                <h4>Add Movies/Books/Games/etc...</h4>
+            
+                <div class="buscar">
+                    <form action="search" method="get" class=" col-md-offset-3">
+                        {% csrf_token %}
+                            <div class="input_group_1">
+                                <div class="input-wrapper_1">
+                                    <input type="text" class="input_1" name="content" placeholder="Search" required>
+
+                                </div>
+
+                                <button class="btn_1 btn-default" type="submit">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="input-icon_1" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+
+                            </div>
+                    <form>
+                       
+                </div>
+      
+                <div class="random_posters">
+                    <a href="content/{{random_book.id}}"><img class="poster random_book" src="{{random_book.poster}}" alt=""></a>
+                    <a href="content/{{random_movie.id}}"><img class="poster random_movie" src="{{random_movie.poster}}" alt=""></a>
+                    <a href="content/{{random_game.id}}"><img class="poster random_game" src="{{random_game.poster}}" alt=""></a>
+                </div>
+            </div>
+    </section>
+    <section class="populars">
+        <div class="popular" id="popular_movies">
+            <h3>Popular Movies</h3>
+            <div class="populares">
+                {%for i in popular_movies%}
+
+                <a href="content/{{i.id}}"><img class="poster " src="{{i.poster}}" alt=""></a>
+                
+                {%endfor%}
+            </div>
+        </div>
+        <div class="popular" id="popular_series">
+            <h3>Popular Series</h3>
+            <div class="populares">
+                {%for i in popular_series%}
+
+                <a href="content/{{i.id}}"><img class="poster " src="{{i.poster}}" alt=""></a>
+                
+                {%endfor%}
+            </div>
+        </div>
+        <div class="popular" id="popular_books">
+            <h3>Popular Books</h3>
+            <div class="populares">
+                {%for i in popular_book%}
+
+                <a href="content/{{i.id}}"><img class="poster " src="{{i.poster}}" alt=""></a>
+                
+                {%endfor%}
+            </div>
+        </div>
+        <div class="popular" id="popular_games">
+            <h3>Popular Games</h3>
+            <div class="populares">
+                {%for i in popular_games%}
+
+                <a href="content/{{i.id}}"><img class="poster " src="{{i.poster}}" alt=""></a>
+                
+                {%endfor%}
+            </div>
+        </div>
+    </section>
+    {%endblock nav%}
+</body>
+
+</html>
